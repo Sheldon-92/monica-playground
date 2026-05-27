@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Monica 网站视觉方向选择</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Noto Sans SC', sans-serif;
+  background: #FDF8F3;
+  color: #2D2A26;
+  min-height: 100vh;
+}
+
+.header {
+  text-align: center;
+  padding: 3rem 1.5rem 2rem;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.header h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  color: #2D2A26;
+}
+
+.header p {
+  font-size: 0.95rem;
+  color: #6B6560;
+  line-height: 1.7;
+}
+
+.gallery {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 0 1.5rem 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.card {
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:active {
+  transform: scale(0.98);
+}
+
+@media (hover: hover) {
+  .card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(0,0,0,0.1);
+  }
+}
+
+.card-preview {
+  width: 100%;
+  aspect-ratio: 16/10;
+  overflow: hidden;
+  position: relative;
+}
+
+.card-preview iframe {
+  width: 200%;
+  height: 200%;
+  transform: scale(0.5);
+  transform-origin: top left;
+  border: none;
+  pointer-events: none;
+}
+
+.card-body {
+  padding: 1rem 1.25rem 1.25rem;
+}
+
+.card-number {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: #E8725A;
+  background: #FFF0EC;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  margin-bottom: 0.5rem;
+}
+
+.card-number.recommended {
+  background: #E8725A;
+  color: #fff;
+}
+
+.card-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+
+.card-desc {
+  font-size: 0.82rem;
+  color: #8A8580;
+  line-height: 1.6;
+}
+
+.footer {
+  text-align: center;
+  padding: 1.5rem;
+  font-size: 0.78rem;
+  color: #B0A8A0;
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>🎨 视觉方向选择</h1>
+  <p>以下是 7 个不同的设计方向，点击任意一个可以全屏预览。<br>
+  看完后告诉我你最喜欢哪个（或者喜欢哪几个的哪些元素）。</p>
+</div>
+
+<div class="gallery">
+
+  <a class="card" href="v1-storybook-warmth.html" target="_blank">
+    <div class="card-preview">
+      <iframe src="v1-storybook-warmth.html" loading="lazy" sandbox></iframe>
+    </div>
+    <div class="card-body">
+      <span class="card-number">方案 1</span>
+      <div class="card-title">绘本温暖风</div>
+      <div class="card-desc">柔和的珊瑚色调、圆角卡片、手绘感装饰，像翻开一本温暖的故事书。</div>
+    </div>
+  </a>
+
+  <a class="card" href="v2-vibrant-pop.html" target="_blank">
+    <div class="card-preview">
+      <iframe src="v2-vibrant-pop.html" loading="lazy" sandbox></iframe>
+    </div>
+    <div class="card-body">
+      <span class="card-number">方案 2</span>
+      <div class="card-title">活力波普风</div>
+      <div class="card-desc">大胆的色彩组合、动态渐变、充满能量感的视觉冲击。</div>
+    </div>
+  </a>
+
+  <a class="card" href="v3-immersive-narrative.html" target="_blank">
+    <div class="card-preview">
+      <iframe src="v3-immersive-narrative.html" loading="lazy" sandbox></iframe>
+    </div>
+    <div class="card-body">
+      <span class="card-number">方案 3a</span>
+      <div class="card-title">沉浸叙事风</div>
+      <div class="card-desc">全屏章节式滚动体验，像看一部视觉故事，每一屏都是一个场景。</div>
+    </div>
+  </a>
+
+  <a class="card" href="v3-ink-watercolor.html" target="_blank">
+    <div class="card-preview">
+      <iframe src="v3-ink-watercolor.html" loading="lazy" sandbox></iframe>
+    </div>
+    <div class="card-body">
+      <span class="card-number">方案 3b</span>
+      <div class="card-title">水墨水彩风</div>
+      <div class="card-desc">东方水墨与西方水彩的融合，文人雅韵搭配温暖色调，独特的艺术质感。</div>
+    </div>
+  </a>
+
+  <a class="card" href="v4-storybook-with-illustrations.html" target="_blank">
+    <div class="card-preview">
+      <iframe src="v4-storybook-with-illustrations.html" loading="lazy" sandbox></iframe>
+    </div>
+    <div class="card-body">
+      <span class="card-number">方案 4</span>
+      <div class="card-title">绘本插画风</div>
+      <div class="card-desc">在温暖风格基础上加入手绘插画元素，更有故事感和人情味。</div>
+    </div>
+  </a>
+
+  <a class="card" href="v5-watercolor-masterpiece.html" target="_blank">
+    <div class="card-preview">
+      <iframe src="v5-watercolor-masterpiece.html" loading="lazy" sandbox></iframe>
+    </div>
+    <div class="card-body">
+      <span class="card-number">方案 5</span>
+      <div class="card-title">水彩画廊风</div>
+      <div class="card-desc">每个章节配专属水彩画作为背景，画面与内容深度融合，艺术感拉满。</div>
+    </div>
+  </a>
+
+  <a class="card" href="v6-narrative-scroll.html" target="_blank">
+    <div class="card-preview">
+      <iframe src="v6-narrative-scroll.html" loading="lazy" sandbox></iframe>
+    </div>
+    <div class="card-body">
+      <span class="card-number recommended">方案 6 ✦ 推荐</span>
+      <div class="card-title">叙事长卷风</div>
+      <div class="card-desc">六章式故事结构：序→痛→解→证→声→邀。全屏水彩背景 + 滚动触发内容揭示，像展开一幅画卷。</div>
+    </div>
+  </a>
+
+</div>
+
+<div class="footer">
+  点击卡片全屏预览 · 手机横竖屏均可查看
+</div>
+
+</body>
+</html>

@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>陈丽娜 — 活力 Pop 方向</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700;900&family=Space+Grotesk:wght@500;700&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --orange: #FF6B35;
+  --pink: #FF3F8E;
+  --yellow: #FFD23F;
+  --mint: #3FEEE6;
+  --purple: #7B61FF;
+  --dark: #1A1A2E;
+  --cream: #FFF9F0;
+  --white: #FFFFFF;
+}
+
+body {
+  font-family: 'Noto Sans SC', sans-serif;
+  background: var(--cream);
+  color: var(--dark);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ═══ HERO ═══ */
+.hero {
+  min-height: 100vh;
+  background: linear-gradient(145deg, #FF6B35 0%, #FF3F8E 50%, #7B61FF 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 24px 40px;
+  text-align: center;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Floating blob decorations */
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.4;
+  animation: blob-float 8s ease-in-out infinite;
+}
+.blob-1 { width: 300px; height: 300px; background: var(--yellow); top: -100px; right: -100px; }
+.blob-2 { width: 200px; height: 200px; background: var(--mint); bottom: -50px; left: -50px; animation-delay: -3s; }
+.blob-3 { width: 150px; height: 150px; background: var(--purple); top: 40%; left: -30px; animation-delay: -5s; }
+
+@keyframes blob-float {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -30px) scale(1.1); }
+  66% { transform: translate(-20px, 20px) scale(0.95); }
+}
+
+/* Geometric shapes */
+.geo {
+  position: absolute;
+  pointer-events: none;
+  opacity: 0.2;
+}
+.geo-ring {
+  width: 80px; height: 80px;
+  border: 4px solid white;
+  border-radius: 50%;
+  top: 15%; right: 15%;
+  animation: spin 15s linear infinite;
+}
+.geo-cross {
+  width: 40px; height: 40px;
+  bottom: 25%; right: 10%;
+}
+.geo-cross::before, .geo-cross::after {
+  content: '';
+  position: absolute;
+  background: white;
+}
+.geo-cross::before { width: 4px; height: 40px; left: 18px; }
+.geo-cross::after { width: 40px; height: 4px; top: 18px; }
+.geo-dots {
+  top: 60%; left: 8%;
+  display: grid;
+  grid-template-columns: repeat(3, 10px);
+  gap: 8px;
+}
+.geo-dot {
+  width: 10px; height: 10px;
+  background: white;
+  border-radius: 50%;
+  opacity: 0.3;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.avatar-pop {
+  width: 130px; height: 130px;
+  border-radius: 30px;
+  transform: rotate(-5deg);
+  background: var(--yellow);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 60px; color: var(--dark); font-weight: 900;
+  box-shadow: 8px 8px 0px rgba(0,0,0,0.15);
+  margin-bottom: 28px;
+  position: relative;
+  z-index: 2;
+}
+
+.hero h1 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: -1px;
+  margin-bottom: 8px;
+  position: relative;
+  z-index: 2;
+}
+.hero .subtitle {
+  font-size: 0.95rem;
+  opacity: 0.85;
+  margin-bottom: 6px;
+  position: relative; z-index: 2;
+}
+.hero .location {
+  font-size: 0.8rem;
+  opacity: 0.7;
+  margin-bottom: 36px;
+  position: relative; z-index: 2;
+}
+
+/* Metric badges — bold pop style */
+.metrics-pop {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+  max-width: 480px;
+  margin-bottom: 32px;
+  position: relative; z-index: 2;
+}
+.metric-badge {
+  flex: 1;
+  padding: 16px 8px;
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 2px solid rgba(255,255,255,0.25);
+  border-radius: 20px;
+  text-align: center;
+}
+.metric-badge .val {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 1.1;
+}
+.metric-badge .lbl {
+  font-size: 0.65rem;
+  opacity: 0.75;
+  margin-top: 4px;
+}
+
+.hero .tagline-pop {
+  font-size: 1.05rem;
+  max-width: 420px;
+  line-height: 1.7;
+  opacity: 0.9;
+  position: relative; z-index: 2;
+}
+
+/* ═══ BLOB DIVIDER ═══ */
+.blob-divider {
+  height: 80px;
+  background: linear-gradient(to bottom, #7B61FF, var(--cream));
+  clip-path: ellipse(75% 100% at 50% 0%);
+  margin-top: -1px;
+}
+
+/* ═══ SERVICES ═══ */
+.services-pop {
+  padding: 48px 24px;
+  background: var(--cream);
+}
+.services-pop h2 {
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 900;
+  margin-bottom: 28px;
+}
+.services-pop h2 span {
+  background: linear-gradient(90deg, var(--orange), var(--pink));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.tab-bar-pop {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 32px;
+  justify-content: center;
+}
+.tab-pop {
+  padding: 12px 20px;
+  border: 3px solid var(--dark);
+  border-radius: 14px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: var(--white);
+  font-family: 'Noto Sans SC', sans-serif;
+}
+.tab-pop.active {
+  background: var(--yellow);
+  border-color: var(--dark);
+  box-shadow: 4px 4px 0px var(--dark);
+  transform: translate(-2px, -2px);
+}
+
+.tab-content-pop {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Neo-brutalist pain points */
+.pain-blocks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+.pain-block {
+  padding: 8px 14px;
+  background: var(--white);
+  border: 2px solid var(--dark);
+  border-radius: 10px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  box-shadow: 3px 3px 0px var(--orange);
+}
+
+.service-list-pop {
+  list-style: none;
+  margin-bottom: 24px;
+}
+.service-list-pop li {
+  padding: 12px 0 12px 36px;
+  position: relative;
+  font-size: 0.9rem;
+  border-bottom: 2px solid #F0E8DC;
+}
+.service-list-pop li::before {
+  content: '→';
+  position: absolute;
+  left: 8px;
+  color: var(--orange);
+  font-weight: 900;
+  font-size: 1.1rem;
+}
+
+/* Case card — pop brutalist */
+.case-pop {
+  background: var(--white);
+  border: 3px solid var(--dark);
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 6px 6px 0px var(--pink);
+  position: relative;
+  overflow: hidden;
+}
+.case-pop::after {
+  content: '⚡';
+  position: absolute;
+  top: 10px; right: 14px;
+  font-size: 2rem;
+  opacity: 0.15;
+}
+.case-pop h4 {
+  font-size: 1.1rem;
+  font-weight: 900;
+  margin-bottom: 12px;
+  color: var(--orange);
+}
+.case-pop .case-result {
+  display: inline-block;
+  padding: 6px 16px;
+  background: linear-gradient(90deg, var(--orange), var(--pink));
+  color: white;
+  border-radius: 100px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-top: 8px;
+}
+
+/* ═══ TESTIMONIALS ═══ */
+.testimonials-pop {
+  padding: 48px 24px;
+  background: var(--dark);
+  color: white;
+}
+.testimonials-pop h2 {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 900;
+  margin-bottom: 32px;
+  color: var(--yellow);
+}
+.testi-grid-pop {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+.testi-card-pop {
+  padding: 24px;
+  border-radius: 20px;
+  border: 2px solid rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.05);
+  position: relative;
+}
+.testi-card-pop::before {
+  content: '"';
+  font-size: 4rem;
+  font-family: Georgia, serif;
+  position: absolute;
+  top: 0; left: 16px;
+  line-height: 1;
+}
+.testi-card-pop:nth-child(1)::before { color: var(--orange); }
+.testi-card-pop:nth-child(2)::before { color: var(--mint); }
+.testi-card-pop:nth-child(3)::before { color: var(--yellow); }
+.testi-card-pop blockquote {
+  font-size: 0.9rem;
+  line-height: 1.8;
+  opacity: 0.9;
+  padding-top: 16px;
+  font-style: italic;
+  margin-bottom: 8px;
+}
+.testi-card-pop .author { font-size: 0.8rem; opacity: 0.5; }
+
+/* ═══ WHY ME ═══ */
+.why-pop {
+  padding: 48px 24px;
+  background: var(--cream);
+}
+.why-pop h2 {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 900;
+  margin-bottom: 32px;
+}
+.compare-pop {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 600px;
+  margin: 0 auto 32px;
+}
+.compare-item {
+  padding: 20px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.compare-item.other {
+  background: var(--white);
+  border: 2px solid #E0D8CE;
+}
+.compare-item.highlight {
+  background: var(--dark);
+  color: white;
+  border: 3px solid var(--yellow);
+  box-shadow: 6px 6px 0px var(--yellow);
+  transform: rotate(-1deg);
+}
+.compare-item .icon { font-size: 2rem; }
+.compare-item .name { font-weight: 900; font-size: 1rem; }
+.compare-item .note { font-size: 0.8rem; opacity: 0.7; margin-top: 2px; }
+
+/* Role pitches */
+.pitches-pop {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.pitch-pop {
+  padding: 20px;
+  border-radius: 16px;
+  border: 2px solid var(--dark);
+  background: var(--white);
+  box-shadow: 4px 4px 0px var(--mint);
+}
+.pitch-pop .target { font-weight: 900; color: var(--purple); margin-bottom: 6px; font-size: 0.85rem; }
+.pitch-pop .text { font-size: 0.9rem; line-height: 1.7; }
+
+/* ═══ CTA ═══ */
+.cta-pop {
+  padding: 60px 24px;
+  background: linear-gradient(135deg, var(--yellow), var(--orange));
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.cta-pop h2 {
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: var(--dark);
+  margin-bottom: 16px;
+}
+.cta-pop p {
+  font-size: 0.9rem;
+  color: var(--dark);
+  opacity: 0.8;
+  max-width: 360px;
+  margin: 0 auto 24px;
+  line-height: 1.7;
+}
+.cta-btn-pop {
+  display: inline-block;
+  padding: 16px 48px;
+  background: var(--dark);
+  color: white;
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: 14px;
+  text-decoration: none;
+  border: 3px solid var(--dark);
+  box-shadow: 4px 4px 0px rgba(0,0,0,0.3);
+  transition: all 0.2s;
+}
+.cta-btn-pop:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px rgba(0,0,0,0.3);
+}
+.cta-contact-pop {
+  margin-top: 16px;
+  font-size: 0.8rem;
+  color: var(--dark);
+  opacity: 0.6;
+}
+
+/* ═══ FLOATING BAR ═══ */
+.floating-bar {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  z-index: 50;
+  display: flex;
+  gap: 12px;
+  padding: 12px 16px;
+  padding-bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+  background: rgba(26, 26, 46, 0.95);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+.floating-bar a, .floating-bar button {
+  flex: 1;
+  padding: 14px;
+  border: none;
+  border-radius: 14px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  display: block;
+  font-family: 'Noto Sans SC', sans-serif;
+  transition: transform 0.2s;
+}
+.floating-bar a:active, .floating-bar button:active { transform: scale(0.97); }
+.floating-bar .wechat-btn {
+  background: linear-gradient(90deg, var(--orange), var(--pink));
+  color: white;
+}
+.floating-bar .phone-btn {
+  background: transparent;
+  color: white;
+  border: 2px solid rgba(255,255,255,0.3);
+}
+.page-bottom-spacer { height: 80px; }
+
+@media (min-width: 768px) {
+  .hero h1 { font-size: 4rem; }
+  .testi-grid-pop { flex-direction: row; }
+  .compare-pop { flex-direction: row; }
+  .compare-item { flex: 1; flex-direction: column; text-align: center; }
+  .compare-item.highlight { transform: rotate(-1deg) scale(1.05); }
+}
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+  <div class="geo geo-ring"></div>
+  <div class="geo geo-cross"></div>
+  <div class="geo geo-dots">
+    <div class="geo-dot"></div><div class="geo-dot"></div><div class="geo-dot"></div>
+    <div class="geo-dot"></div><div class="geo-dot"></div><div class="geo-dot"></div>
+    <div class="geo-dot"></div><div class="geo-dot"></div><div class="geo-dot"></div>
+  </div>
+
+  <div class="avatar-pop">陈</div>
+  <h1>陈丽娜</h1>
+  <p class="subtitle">教育学硕士（瑞士伯尔尼大学）｜15 年教育产品与教学闭环实战</p>
+  <p class="location">Base 成都 ｜ 可接全国项目合作</p>
+
+  <div class="metrics-pop">
+    <div class="metric-badge">
+      <div class="val">38→75%</div>
+      <div class="lbl">DEMO课转化</div>
+    </div>
+    <div class="metric-badge">
+      <div class="val">40→0.3%</div>
+      <div class="lbl">教师流失</div>
+    </div>
+    <div class="metric-badge">
+      <div class="val">1,000+</div>
+      <div class="lbl">师训覆盖</div>
+    </div>
+  </div>
+  <p class="tagline-pop">诊断产品 → 研发课程 → 培训出能打仗的老师</p>
+</section>
+
+<div class="blob-divider"></div>
+
+<section class="services-pop">
+  <h2><span>服务与案例</span></h2>
+  <div class="tab-bar-pop">
+    <button class="tab-pop active">咨询诊断</button>
+    <button class="tab-pop">产品研发</button>
+    <button class="tab-pop">培训体系</button>
+  </div>
+  <div class="tab-content-pop">
+    <div class="pain-blocks">
+      <span class="pain-block">课程卖不动</span>
+      <span class="pain-block">交付不统一</span>
+      <span class="pain-block">老师不会讲</span>
+      <span class="pain-block">用户学了没效果</span>
+    </div>
+    <ul class="service-list-pop">
+      <li>从研发产品到教学执行落地的闭环诊断</li>
+      <li>DEMO 试听课/转化路径优化</li>
+      <li>长期陪跑（产品 + 教学 + 增长）</li>
+    </ul>
+    <div class="case-pop">
+      <h4>DEMO 课转化翻倍</h4>
+      <p style="font-size:0.85rem;color:#666;margin-bottom:8px;">某机构试听课转化率长期卡在 38%。3 周诊断 + 教学触点重构，直接翻倍。</p>
+      <span class="case-result">38% → 75%</span>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials-pop">
+  <h2>客户怎么说 ✦</h2>
+  <div class="testi-grid-pop">
+    <div class="testi-card-pop">
+      <blockquote>陈老师帮我们做 DEMO 课诊断后，3 周时间转化率翻倍。她不是给我们一个 PPT，而是带着我们现场改、现场练。</blockquote>
+      <p class="author">—— 某教育机构创始人</p>
+    </div>
+    <div class="testi-card-pop">
+      <blockquote>教师流失率从 40% 降到 0.3%，这在教育行业几乎不可能。她做到了。</blockquote>
+      <p class="author">—— 某机构教学负责人</p>
+    </div>
+    <div class="testi-card-pop">
+      <blockquote>8 周时间，从 0 到完整小课包交付，我们直接启动招生。她是我合作过最「落地」的产品人。</blockquote>
+      <p class="author">—— 某课程合作方</p>
+    </div>
+  </div>
+</section>
+
+<section class="why-pop">
+  <h2>为什么选择我</h2>
+  <div class="compare-pop">
+    <div class="compare-item other">
+      <span class="icon">📝</span>
+      <div>
+        <p class="name">普通教研</p>
+        <p class="note">给你方案，不管落地</p>
+      </div>
+    </div>
+    <div class="compare-item other">
+      <span class="icon">🎤</span>
+      <div>
+        <p class="name">普通培训师</p>
+        <p class="note">讲完就走，不追结果</p>
+      </div>
+    </div>
+    <div class="compare-item highlight">
+      <span class="icon">🚀</span>
+      <div>
+        <p class="name">我</p>
+        <p class="note">从诊断到落地到培训，一手包完，并且用数据验证</p>
+      </div>
+    </div>
+  </div>
+  <div class="pitches-pop">
+    <div class="pitch-pop">
+      <p class="target">如果你是机构创始人：</p>
+      <p class="text">"我做过 0-1，也做过 1-10。你的增长瓶颈，我大概率见过。"</p>
+    </div>
+    <div class="pitch-pop">
+      <p class="target">如果你是教学负责人：</p>
+      <p class="text">"我让一个机构的教师流失率从 40% 降到 0.3%。你的老师问题，我有系统解法。"</p>
+    </div>
+    <div class="pitch-pop">
+      <p class="target">如果你是课程合作方：</p>
+      <p class="text">"我研发的项目，NPS +50%、续费率 +35%。你的产品，我可以让它更能打。"</p>
+    </div>
+  </div>
+</section>
+
+<section class="cta-pop">
+  <h2>免费诊断邀请 ⚡</h2>
+  <p>如果你正在纠结"课程卖不动 / 老师教不好 / 培训没效果"，我可以为你提供一次 30 分钟的免费诊断沟通。</p>
+  <a href="tel:15757365158" class="cta-btn-pop">立即预约 30 分钟免费诊断</a>
+  <p class="cta-contact-pop">微信/电话：15757365158（添加请备注"诊断"）</p>
+</section>
+
+<div class="page-bottom-spacer"></div>
+<div class="floating-bar">
+  <button class="wechat-btn">加微信</button>
+  <a href="tel:15757365158" class="phone-btn">打电话</a>
+</div>
+
+</body>
+</html>

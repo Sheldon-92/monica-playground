@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 420" role="img" aria-labelledby="title desc">
+  <title id="title">Playful hand drawn stars</title>
+  <desc id="desc">Scattered hand drawn star and sparkle doodles in warm watercolor colors.</desc>
+  <defs>
+    <filter id="sketchy" x="-12%" y="-12%" width="124%" height="124%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" seed="22" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="2.4"/>
+    </filter>
+    <filter id="softPaint" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation=".8"/>
+    </filter>
+    <style>
+      .line { stroke: #654d3e; stroke-width: 3.2; stroke-linecap: round; stroke-linejoin: round; opacity: .7; }
+    </style>
+  </defs>
+  <rect width="760" height="420" fill="none"/>
+  <g filter="url(#sketchy)">
+    <path d="M84 56c14 21 29 23 51 8-15 22-13 37 8 52-25-7-40-1-49 24-3-27-14-38-40-37 23-13 31-27 30-47Z" fill="#F5A623" opacity=".78" class="line"/>
+    <path d="M332 45c9 13 19 15 33 5-9 14-8 24 5 34-16-5-26-1-32 15-2-17-9-25-26-24 15-9 20-18 20-30Z" fill="#7EC8D9" opacity=".74" class="line"/>
+    <path d="M609 76c13 18 27 20 47 7-13 20-12 34 7 48-23-7-36-1-45 21-3-24-13-35-37-34 21-13 28-25 28-42Z" fill="#E8725A" opacity=".74" class="line"/>
+    <path d="M188 235c10 15 21 16 37 6-10 16-9 27 6 38-18-5-29-1-36 17-2-19-10-28-29-27 17-10 23-20 22-34Z" fill="#6B9E7A" opacity=".75" class="line"/>
+    <path d="M513 256c16 22 33 25 57 9-16 25-14 41 9 58-28-9-45-2-56 25-3-31-15-43-46-42 27-16 36-31 36-50Z" fill="#F5A623" opacity=".72" class="line"/>
+    <path d="M690 294c7 11 15 12 27 4-8 12-7 20 4 28-13-4-21-1-26 12-2-14-8-20-22-20 12-8 17-15 17-24Z" fill="#7EC8D9" opacity=".72" class="line"/>
+  </g>
+  <g filter="url(#sketchy)" fill="none" class="line">
+    <path d="M228 84c0 20 0 31 0 51"/>
+    <path d="M204 111c19 0 30 0 49 0"/>
+    <path d="M453 96c0 15 0 24 0 39"/>
+    <path d="M435 116c15 0 24 0 39 0"/>
+    <path d="M103 314c0 16 0 26 0 42"/>
+    <path d="M83 335c17 0 26 0 42 0"/>
+    <path d="M371 324c0 19 0 30 0 49"/>
+    <path d="M347 349c20 0 31 0 51 0"/>
+    <path d="M661 190c0 14 0 22 0 36"/>
+    <path d="M644 208c14 0 22 0 36 0"/>
+  </g>
+  <g filter="url(#softPaint)">
+    <circle cx="63" cy="184" r="8" fill="#E8725A" opacity=".46"/>
+    <circle cx="276" cy="174" r="6" fill="#F5A623" opacity=".5"/>
+    <circle cx="411" cy="214" r="9" fill="#6B9E7A" opacity=".42"/>
+    <circle cx="575" cy="169" r="7" fill="#E8725A" opacity=".46"/>
+    <circle cx="721" cy="137" r="5" fill="#F5A623" opacity=".5"/>
+    <circle cx="288" cy="361" r="8" fill="#7EC8D9" opacity=".45"/>
+  </g>
+</svg>

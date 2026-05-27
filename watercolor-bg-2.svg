@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" role="img" aria-labelledby="title desc">
+  <title id="title">Rose sky blue amber watercolor wash</title>
+  <desc id="desc">A soft abstract watercolor background for a warm education website section.</desc>
+  <defs>
+    <filter id="wetEdge" x="-22%" y="-22%" width="144%" height="144%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.015" numOctaves="5" seed="82" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="24" result="moved"/>
+      <feGaussianBlur in="moved" stdDeviation="15"/>
+    </filter>
+    <filter id="fiber" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.58" numOctaves="3" seed="14" result="grain"/>
+      <feColorMatrix in="grain" type="saturate" values="0"/>
+      <feComponentTransfer>
+        <feFuncA type="table" tableValues="0 .06"/>
+      </feComponentTransfer>
+      <feBlend in="SourceGraphic" mode="multiply"/>
+    </filter>
+    <radialGradient id="rose" cx="44%" cy="45%" r="70%">
+      <stop offset="0" stop-color="#D9828B" stop-opacity=".45"/>
+      <stop offset=".55" stop-color="#D9828B" stop-opacity=".2"/>
+      <stop offset="1" stop-color="#D9828B" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="sky" cx="48%" cy="46%" r="72%">
+      <stop offset="0" stop-color="#7EC8D9" stop-opacity=".48"/>
+      <stop offset=".58" stop-color="#7EC8D9" stop-opacity=".19"/>
+      <stop offset="1" stop-color="#7EC8D9" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="gold" cx="48%" cy="45%" r="70%">
+      <stop offset="0" stop-color="#F5A623" stop-opacity=".42"/>
+      <stop offset=".62" stop-color="#F5A623" stop-opacity=".16"/>
+      <stop offset="1" stop-color="#F5A623" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="680" fill="#fff8f1"/>
+  <g filter="url(#wetEdge)">
+    <ellipse cx="298" cy="240" rx="260" ry="198" fill="url(#rose)" transform="rotate(14 298 240)"/>
+    <ellipse cx="560" cy="384" rx="390" ry="246" fill="url(#sky)" transform="rotate(-8 560 384)"/>
+    <ellipse cx="825" cy="245" rx="302" ry="205" fill="url(#gold)" transform="rotate(11 825 245)"/>
+    <ellipse cx="958" cy="457" rx="238" ry="151" fill="url(#rose)" opacity=".58" transform="rotate(-16 958 457)"/>
+    <ellipse cx="201" cy="520" rx="229" ry="130" fill="url(#gold)" opacity=".56"/>
+  </g>
+  <g filter="url(#fiber)" opacity=".72">
+    <rect width="1200" height="680" fill="#fffaf5"/>
+  </g>
+</svg>

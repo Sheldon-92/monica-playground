@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>陈丽娜 — 叙事滚动版</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;600;700;900&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Noto+Sans+SC:wght@300;400;700&display=swap');
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --ink: #2C2926;
+  --ink-soft: #5A534D;
+  --parchment: #FAFAF6;
+  --warm: #F5EDE3;
+  --coral: #D4785A;
+  --sage: #7A9E7A;
+  --amber: #C49A4A;
+}
+
+html { scroll-behavior: smooth; scroll-snap-type: y proximity; }
+
+body {
+  font-family: 'Noto Serif SC', Georgia, serif;
+  background: var(--parchment);
+  color: var(--ink);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ═══ CHAPTER — full-screen narrative section ═══ */
+.chapter {
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  scroll-snap-align: start;
+}
+
+/* Painting background layer */
+.chapter-painting {
+  position: absolute;
+  inset: 0; z-index: 0;
+}
+.chapter-painting img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+/* Vignette */
+.chapter-painting::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at center, transparent 30%, rgba(250,250,246,0.7) 100%);
+}
+
+/* Content overlay */
+.chapter-body {
+  position: relative; z-index: 2;
+  padding: 60px 28px;
+  max-width: 560px;
+  text-align: center;
+}
+
+/* ═══ SCROLL-TRIGGERED ANIMATIONS ═══ */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 0.2s; }
+.reveal-delay-2 { transition-delay: 0.4s; }
+.reveal-delay-3 { transition-delay: 0.6s; }
+.reveal-delay-4 { transition-delay: 0.8s; }
+.reveal-delay-5 { transition-delay: 1.0s; }
+
+/* ═══════════════════════════════════════
+   CHAPTER 1: 序 — WHO IS SHE
+   ═══════════════════════════════════════ */
+.ch1 .chapter-painting img {
+  filter: brightness(1.05) saturate(0.85);
+}
+.ch1 .portrait {
+  width: 140px; height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 12px 48px rgba(0,0,0,0.12);
+  margin-bottom: 28px;
+  border: 3px solid rgba(255,255,255,0.6);
+}
+.ch1 h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  font-weight: 900;
+  letter-spacing: 8px;
+  margin-bottom: 16px;
+  text-shadow: 0 2px 24px rgba(255,255,255,0.8);
+}
+.ch1 .verse {
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 2.2;
+  color: var(--ink-soft);
+  text-shadow: 0 1px 12px rgba(255,255,255,0.6);
+}
+.ch1 .verse em {
+  font-style: normal;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.scroll-hint {
+  position: absolute;
+  bottom: 28px; left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 0.65rem;
+  color: var(--ink-soft);
+  opacity: 0.4;
+  letter-spacing: 3px;
+  animation: pulse 2.5s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 0.4; transform: translateX(-50%) translateY(0); }
+  50% { opacity: 0.2; transform: translateX(-50%) translateY(6px); }
+}
+
+/* ═══════════════════════════════════════
+   CHAPTER 2: 痛 — THE PROBLEM
+   ═══════════════════════════════════════ */
+.ch2 {
+  background: var(--warm);
+}
+.ch2 .chapter-painting img {
+  opacity: 0.2;
+  filter: saturate(0.6) blur(2px);
+}
+.ch2 h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: 4px;
+  margin-bottom: 36px;
+}
+.pain-line {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 300;
+  color: var(--ink-soft);
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  position: relative;
+}
+.pain-line::before {
+  content: '';
+  position: absolute;
+  left: -20px; top: 50%;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  transform: translateY(-50%);
+}
+.pain-line:nth-child(1)::before { background: var(--coral); opacity: 0.4; }
+.pain-line:nth-child(2)::before { background: var(--amber); opacity: 0.4; }
+.pain-line:nth-child(3)::before { background: var(--sage); opacity: 0.4; }
+.pain-line:nth-child(4)::before { background: var(--coral); opacity: 0.4; }
+
+.ch2 .bridge {
+  margin-top: 36px;
+  font-size: 0.9rem;
+  font-style: italic;
+  color: var(--coral);
+  font-weight: 600;
+}
+
+/* ═══════════════════════════════════════
+   CHAPTER 3: 解 — HER APPROACH
+   ═══════════════════════════════════════ */
+.ch3 .chapter-painting img {
+  opacity: 0.25;
+  filter: saturate(0.7);
+}
+.ch3 h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: 4px;
+  margin-bottom: 40px;
+}
+
+.step-flow {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  text-align: left;
+}
+.step {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+.step-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: var(--coral);
+  opacity: 0.3;
+  line-height: 1;
+  flex-shrink: 0;
+  width: 40px;
+}
+.step-text {
+  padding-top: 6px;
+}
+.step-title {
+  font-weight: 700;
+  font-size: 1rem;
+  margin-bottom: 4px;
+}
+.step-desc {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  line-height: 1.7;
+}
+
+/* ═══════════════════════════════════════
+   CHAPTER 4: 证 — THE PROOF
+   ═══════════════════════════════════════ */
+.ch4 {
+  background: var(--ink);
+  color: var(--parchment);
+}
+.ch4 .chapter-painting img {
+  opacity: 0.12;
+  filter: saturate(0.3);
+}
+.ch4 h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  font-weight: 400;
+  letter-spacing: 4px;
+  margin-bottom: 48px;
+  opacity: 0.7;
+}
+
+.proof-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+.proof {
+  text-align: center;
+}
+.proof .big-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.5rem;
+  font-weight: 900;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.proof:nth-child(1) .big-num { color: var(--coral); }
+.proof:nth-child(2) .big-num { color: var(--sage); }
+.proof:nth-child(3) .big-num { color: var(--amber); }
+.proof .proof-label {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  opacity: 0.5;
+}
+.proof .proof-story {
+  font-size: 0.85rem;
+  opacity: 0.6;
+  margin-top: 8px;
+  line-height: 1.7;
+  max-width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ═══════════════════════════════════════
+   CHAPTER 5: 声 — THEIR VOICES
+   ═══════════════════════════════════════ */
+.ch5 .chapter-painting img {
+  opacity: 0.18;
+  filter: saturate(0.7) blur(1px);
+}
+.ch5 h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  letter-spacing: 4px;
+  margin-bottom: 40px;
+  font-weight: 400;
+}
+
+.voice {
+  margin-bottom: 32px;
+  position: relative;
+  padding-left: 20px;
+}
+.voice::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 4px; bottom: 4px;
+  width: 2px;
+  border-radius: 1px;
+}
+.voice:nth-child(1)::before { background: var(--coral); }
+.voice:nth-child(2)::before { background: var(--sage); }
+.voice:nth-child(3)::before { background: var(--amber); }
+
+.voice blockquote {
+  font-size: 0.95rem;
+  line-height: 2;
+  font-style: italic;
+  margin-bottom: 8px;
+}
+.voice .who {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 0.7rem;
+  color: var(--ink-soft);
+  letter-spacing: 1px;
+}
+
+/* ═══════════════════════════════════════
+   CHAPTER 6: 邀 — THE INVITATION
+   ═══════════════════════════════════════ */
+.ch6 .chapter-painting img {
+  filter: brightness(1.1) saturate(0.8);
+}
+.ch6 .chapter-painting::after {
+  background: radial-gradient(ellipse at center, rgba(250,250,246,0.3) 20%, rgba(250,250,246,0.75) 100%);
+}
+.ch6 h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 900;
+  letter-spacing: 4px;
+  margin-bottom: 16px;
+}
+.ch6 .invite-text {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+  max-width: 360px;
+  margin: 0 auto 28px;
+  line-height: 1.9;
+}
+.cta-btn {
+  display: inline-block;
+  padding: 16px 48px;
+  background: var(--ink);
+  color: var(--parchment);
+  font-family: 'Noto Serif SC', serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  border-radius: 100px;
+  text-decoration: none;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+  transition: all 0.3s;
+}
+.cta-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.18);
+}
+.cta-contact {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 0.75rem;
+  color: var(--ink-soft);
+  opacity: 0.4;
+  margin-top: 20px;
+}
+
+/* ═══ FLOATING BAR ═══ */
+.float-bar {
+  position: fixed;
+  bottom: 0; left: 0; right: 0; z-index: 50;
+  display: flex; gap: 10px;
+  padding: 10px 16px;
+  padding-bottom: calc(10px + env(safe-area-inset-bottom, 0px));
+  background: rgba(250,250,246,0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 -2px 24px rgba(0,0,0,0.05);
+  border-top: 1px solid rgba(0,0,0,0.04);
+}
+.float-bar a, .float-bar button {
+  flex: 1; padding: 12px; border: none; border-radius: 100px;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 0.82rem; font-weight: 600; cursor: pointer;
+  text-decoration: none; text-align: center; display: block;
+  letter-spacing: 1px; transition: transform 0.2s;
+}
+.float-bar .wx { background: var(--ink); color: var(--parchment); }
+.float-bar .tel { background: transparent; color: var(--ink); border: 1.5px solid var(--ink); }
+.spacer { height: 68px; }
+
+/* ═══ RESPONSIVE ═══ */
+@media (min-width: 768px) {
+  .ch1 h1 { font-size: 4.5rem; letter-spacing: 12px; }
+  .proof-grid { flex-direction: row; gap: 48px; justify-content: center; }
+  .proof .big-num { font-size: 4.5rem; }
+  .step-flow { gap: 32px; }
+  .ch6 h2 { font-size: 2.8rem; }
+}
+@media (min-width: 1024px) {
+  .ch1 h1 { font-size: 5.5rem; }
+  .chapter-body { max-width: 700px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ CHAPTER 1: 序 ═══ -->
+<section class="chapter ch1">
+  <div class="chapter-painting">
+    <img src="hero-watercolor.png" alt="">
+  </div>
+  <div class="chapter-body">
+    <img src="portrait-watercolor.png" alt="陈丽娜" class="portrait reveal">
+    <h1 class="reveal reveal-delay-1">陈丽娜</h1>
+    <p class="verse reveal reveal-delay-2">
+      <em>教育学硕士</em>（瑞士伯尔尼大学）<br>
+      15 年教育产品与教学闭环实战<br>
+      Base 成都 ｜ 可接全国项目合作
+    </p>
+  </div>
+  <span class="scroll-hint">向下滚动 ↓</span>
+</section>
+
+<!-- ═══ CHAPTER 2: 痛 ═══ -->
+<section class="chapter ch2">
+  <div class="chapter-painting">
+    <img src="chapter-classroom.png" alt="">
+  </div>
+  <div class="chapter-body">
+    <h2 class="reveal">你是否也在经历</h2>
+    <div style="max-width:360px;margin:0 auto;text-align:left;padding-left:24px;">
+      <p class="pain-line reveal reveal-delay-1">课程卖不动</p>
+      <p class="pain-line reveal reveal-delay-2">交付不统一</p>
+      <p class="pain-line reveal reveal-delay-3">老师不会讲</p>
+      <p class="pain-line reveal reveal-delay-4">用户学了没效果</p>
+    </div>
+    <p class="bridge reveal reveal-delay-5">
+      我不是只做课程设计的人。<br>
+      我能做的是——
+    </p>
+  </div>
+</section>
+
+<!-- ═══ CHAPTER 3: 解 ═══ -->
+<section class="chapter ch3">
+  <div class="chapter-painting">
+    <img src="chapter-growth.png" alt="">
+  </div>
+  <div class="chapter-body">
+    <h2 class="reveal">我这样工作</h2>
+    <div class="step-flow">
+      <div class="step reveal reveal-delay-1">
+        <span class="step-num">1</span>
+        <div class="step-text">
+          <p class="step-title">先诊断</p>
+          <p class="step-desc">2–3 周，看数据 + 看现场。在混乱的课程体系中发现真正的问题。</p>
+        </div>
+      </div>
+      <div class="step reveal reveal-delay-2">
+        <span class="step-num">2</span>
+        <div class="step-text">
+          <p class="step-title">再方案</p>
+          <p class="step-desc">给你可执行的路径，不是 PPT。把问题翻译成可落地、可复制、可增长的产品方案。</p>
+        </div>
+      </div>
+      <div class="step reveal reveal-delay-3">
+        <span class="step-num">3</span>
+        <div class="step-text">
+          <p class="step-title">后陪跑</p>
+          <p class="step-desc">落地过程中随时调整。让方案在教室里活起来。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CHAPTER 4: 证 ═══ -->
+<section class="chapter ch4">
+  <div class="chapter-painting">
+    <img src="watercolor-splash-accent.png" alt="" style="object-fit:contain;opacity:0.08;">
+  </div>
+  <div class="chapter-body">
+    <h2 class="reveal">用数据说话</h2>
+    <div class="proof-grid">
+      <div class="proof reveal reveal-delay-1">
+        <div class="big-num">38→75%</div>
+        <p class="proof-label">DEMO 课转化率</p>
+        <p class="proof-story">3 周诊断 + 教学触点重构，试听课转化直接翻倍</p>
+      </div>
+      <div class="proof reveal reveal-delay-2">
+        <div class="big-num">40→0.3%</div>
+        <p class="proof-label">教师流失率</p>
+        <p class="proof-story">搭建培训切片体系 + 成长绑定机制，留存率 99.7%</p>
+      </div>
+      <div class="proof reveal reveal-delay-3">
+        <div class="big-num">1,000+</div>
+        <p class="proof-label">师训覆盖教师</p>
+        <p class="proof-story">混合培训体系一次性解决规模化师资培养</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CHAPTER 5: 声 ═══ -->
+<section class="chapter ch5">
+  <div class="chapter-painting">
+    <img src="hero-watercolor.png" alt="" style="object-position: bottom; transform: scaleX(-1);">
+  </div>
+  <div class="chapter-body" style="text-align:left;">
+    <h2 class="reveal" style="text-align:center;">他们这样说</h2>
+    <div class="voice reveal reveal-delay-1">
+      <blockquote>"陈老师帮我们做 DEMO 课诊断后，3 周时间转化率翻倍。她不是给我们一个 PPT，而是带着我们现场改、现场练。"</blockquote>
+      <p class="who">—— 某教育机构创始人</p>
+    </div>
+    <div class="voice reveal reveal-delay-2">
+      <blockquote>"教师流失率从 40% 降到 0.3%，这在教育行业几乎不可能。她做到了。"</blockquote>
+      <p class="who">—— 某机构教学负责人</p>
+    </div>
+    <div class="voice reveal reveal-delay-3">
+      <blockquote>"8 周时间，从 0 到完整小课包交付，我们直接启动招生。她是我合作过最「落地」的产品人。"</blockquote>
+      <p class="who">—— 某课程合作方</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CHAPTER 6: 邀 ═══ -->
+<section class="chapter ch6">
+  <div class="chapter-painting">
+    <img src="chapter-together.png" alt="">
+  </div>
+  <div class="chapter-body">
+    <h2 class="reveal">免费诊断邀请</h2>
+    <p class="invite-text reveal reveal-delay-1">
+      如果你正在纠结<br>
+      "课程卖不动 / 老师教不好 / 培训没效果"<br><br>
+      我可以为你提供<br>
+      一次 30 分钟的免费诊断沟通
+    </p>
+    <a href="tel:15757365158" class="cta-btn reveal reveal-delay-2">立即预约</a>
+    <p class="cta-contact reveal reveal-delay-3">微信/电话：15757365158（添加请备注"诊断"）</p>
+  </div>
+</section>
+
+<div class="spacer"></div>
+
+<!-- ═══ FLOATING BAR ═══ -->
+<div class="float-bar">
+  <button class="wx">加微信</button>
+  <a href="tel:15757365158" class="tel">打电话</a>
+</div>
+
+<!-- ═══ SCROLL REVEAL JS ═══ -->
+<script>
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.15 });
+reveals.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

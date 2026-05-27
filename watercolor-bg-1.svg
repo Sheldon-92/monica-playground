@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" role="img" aria-labelledby="title desc">
+  <title id="title">Coral amber sage watercolor wash</title>
+  <desc id="desc">A soft abstract watercolor background with overlapping blurred washes.</desc>
+  <defs>
+    <filter id="bleed" x="-25%" y="-25%" width="150%" height="150%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="5" seed="34" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="28" result="ripple"/>
+      <feGaussianBlur in="ripple" stdDeviation="18"/>
+    </filter>
+    <filter id="paper" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="2" seed="9" result="grain"/>
+      <feColorMatrix in="grain" type="saturate" values="0"/>
+      <feComponentTransfer>
+        <feFuncA type="table" tableValues="0 .075"/>
+      </feComponentTransfer>
+      <feBlend in="SourceGraphic" mode="multiply"/>
+    </filter>
+    <radialGradient id="coral" cx="43%" cy="43%" r="65%">
+      <stop offset="0" stop-color="#E8725A" stop-opacity=".46"/>
+      <stop offset=".58" stop-color="#E8725A" stop-opacity=".22"/>
+      <stop offset="1" stop-color="#E8725A" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="amber" cx="48%" cy="45%" r="70%">
+      <stop offset="0" stop-color="#F5A623" stop-opacity=".5"/>
+      <stop offset=".62" stop-color="#F5A623" stop-opacity=".19"/>
+      <stop offset="1" stop-color="#F5A623" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="sage" cx="50%" cy="44%" r="72%">
+      <stop offset="0" stop-color="#6B9E7A" stop-opacity=".42"/>
+      <stop offset=".56" stop-color="#6B9E7A" stop-opacity=".17"/>
+      <stop offset="1" stop-color="#6B9E7A" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="680" fill="#fff9ef"/>
+  <g filter="url(#bleed)">
+    <ellipse cx="354" cy="295" rx="316" ry="236" fill="url(#coral)" transform="rotate(-12 354 295)"/>
+    <ellipse cx="596" cy="235" rx="330" ry="214" fill="url(#amber)" transform="rotate(9 596 235)"/>
+    <ellipse cx="704" cy="407" rx="376" ry="225" fill="url(#sage)" transform="rotate(-7 704 407)"/>
+    <ellipse cx="934" cy="244" rx="245" ry="178" fill="url(#coral)" opacity=".62" transform="rotate(16 934 244)"/>
+    <ellipse cx="229" cy="483" rx="270" ry="146" fill="url(#amber)" opacity=".52" transform="rotate(7 229 483)"/>
+  </g>
+  <g filter="url(#paper)" opacity=".65">
+    <rect width="1200" height="680" fill="#fffaf2"/>
+  </g>
+</svg>

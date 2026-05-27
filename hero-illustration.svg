@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 620" role="img" aria-labelledby="title desc">
+  <title id="title">Warm storybook education illustration</title>
+  <desc id="desc">Open books, colorful pencils, small stars, a graduation cap, and soft organic watercolor shapes.</desc>
+  <defs>
+    <filter id="paperTexture" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="4" seed="18" result="noise"/>
+      <feColorMatrix in="noise" type="saturate" values="0"/>
+      <feComponentTransfer>
+        <feFuncA type="table" tableValues="0 0.16"/>
+      </feComponentTransfer>
+      <feBlend in="SourceGraphic" mode="multiply"/>
+    </filter>
+    <filter id="wobble" x="-8%" y="-8%" width="116%" height="116%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.022" numOctaves="3" seed="7" result="turb"/>
+      <feDisplacementMap in="SourceGraphic" in2="turb" scale="3.2"/>
+    </filter>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="150%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="8"/>
+      <feOffset dx="0" dy="8" result="offset"/>
+      <feColorMatrix in="offset" type="matrix" values="0 0 0 0 0.34 0 0 0 0 0.22 0 0 0 0 0.12 0 0 0 0.18 0"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <style>
+      .ink { stroke: #5b4a3d; stroke-linecap: round; stroke-linejoin: round; }
+      .sketch { fill: none; stroke: #6a5142; stroke-width: 4.5; stroke-linecap: round; stroke-linejoin: round; opacity: .72; }
+      .thin { fill: none; stroke: #6a5142; stroke-width: 2.7; stroke-linecap: round; stroke-linejoin: round; opacity: .68; }
+    </style>
+  </defs>
+
+  <rect width="920" height="620" fill="#fff8ec"/>
+  <g filter="url(#paperTexture)">
+    <path d="M119 115c84-68 221-71 313-32 86 37 129 13 213 7 83-6 156 37 178 110 24 80-21 153-99 191-80 39-163 23-235 72-75 51-191 78-280 35C105 448 57 329 75 235c9-46 16-85 44-120Z" fill="#F5A623" opacity=".16"/>
+    <path d="M188 190c47-58 122-62 188-29 59 30 87 88 62 152-29 73-105 101-175 82-79-21-127-99-101-164 6-15 14-29 26-41Z" fill="#E8725A" opacity=".18"/>
+    <path d="M570 163c53-38 137-36 181 12 45 50 34 126-22 165-61 42-149 22-181-40-25-49-15-110 22-137Z" fill="#7EC8D9" opacity=".24"/>
+    <path d="M463 386c43-47 125-55 176-19 60 43 54 131-7 177-70 52-173 26-197-47-13-40-2-79 28-111Z" fill="#6B9E7A" opacity=".18"/>
+  </g>
+
+  <g filter="url(#softShadow)">
+    <g filter="url(#wobble)">
+      <path d="M242 363c61-42 134-54 207-36 15 4 28 16 31 31 6 29 10 58 15 87-87-21-173-12-257 27-2-37 0-72 4-109Z" fill="#fff5df" class="ink" stroke-width="5"/>
+      <path d="M496 358c69-25 142-19 218 18 7 35 8 69 0 102-78-39-154-47-228-28 3-31 6-61 10-92Z" fill="#fff1d2" class="ink" stroke-width="5"/>
+      <path d="M480 360c3 34 4 68 4 102" class="sketch"/>
+      <path d="M272 384c46-23 95-33 146-28" class="thin"/>
+      <path d="M274 414c51-25 103-34 157-25" class="thin"/>
+      <path d="M528 386c49-13 100-7 153 15" class="thin"/>
+      <path d="M522 417c55-13 111-5 168 24" class="thin"/>
+      <path d="M331 329c18-14 39-23 63-28 11 15 17 32 17 50-27-1-54 4-80 14-4-14-4-26 0-36Z" fill="#7EC8D9" opacity=".76" class="ink" stroke-width="4"/>
+      <path d="M365 303c6 12 10 27 13 43" class="thin"/>
+    </g>
+  </g>
+
+  <g filter="url(#wobble)">
+    <path d="M642 120l88 29-67 50-88-29 67-50Z" fill="#6B9E7A" class="ink" stroke-width="5"/>
+    <path d="M662 199c-6 22-8 46-7 72 33-9 58-21 78-36-9-22-11-45-8-69l-63 33Z" fill="#86b991" class="ink" stroke-width="4"/>
+    <path d="M729 149c9 35 12 62 10 83" class="thin"/>
+    <path d="M739 233c12 10 19 23 18 39" class="thin"/>
+    <circle cx="756" cy="277" r="9" fill="#E8725A" opacity=".88"/>
+  </g>
+
+  <g filter="url(#wobble)">
+    <path d="M168 459l185-244c8-10 23-10 31 0 7 9 7 22 0 31L199 489c-9 12-27 13-37 2-8-9-6-22 6-32Z" fill="#F5A623" class="ink" stroke-width="4"/>
+    <path d="M206 479l185-242" class="thin"/>
+    <path d="M202 486l-50 26 14-55" fill="#f6d2a7" class="ink" stroke-width="4"/>
+    <path d="M152 512l17-20-11-9-6 29Z" fill="#5b4a3d"/>
+
+    <path d="M712 435L548 203c-7-10-3-24 8-30 10-6 23-3 30 7l162 232c8 12 5 27-8 34-10 6-22 1-28-11Z" fill="#E8725A" class="ink" stroke-width="4"/>
+    <path d="M727 436L566 203" class="thin"/>
+    <path d="M743 444l31 44-56-9" fill="#f6d2a7" class="ink" stroke-width="4"/>
+    <path d="M774 488l-23-14-8 12 31 2Z" fill="#5b4a3d"/>
+
+    <path d="M306 506l30-246c2-13 14-21 27-18 12 3 20 14 18 27l-31 246c-2 15-16 24-30 19-11-4-16-15-14-28Z" fill="#7EC8D9" class="ink" stroke-width="4"/>
+    <path d="M327 523l32-264" class="thin"/>
+  </g>
+
+  <g filter="url(#wobble)" opacity=".92">
+    <path d="M142 150c11 8 19 9 32 1-8 12-8 21 1 32-12-8-21-8-32 1 8-12 8-21-1-34Z" fill="#F5A623" class="ink" stroke-width="3"/>
+    <path d="M757 356c8 6 15 6 24 0-6 9-6 16 1 24-10-6-17-6-25 1 6-10 6-17 0-25Z" fill="#E8725A" class="ink" stroke-width="3"/>
+    <path d="M519 115c7 5 13 5 21 0-5 8-5 14 0 22-8-5-15-5-22 0 5-8 5-14 1-22Z" fill="#7EC8D9" class="ink" stroke-width="2.5"/>
+    <circle cx="214" cy="133" r="8" fill="#6B9E7A" opacity=".8"/>
+    <circle cx="774" cy="173" r="7" fill="#F5A623" opacity=".72"/>
+    <circle cx="126" cy="373" r="6" fill="#E8725A" opacity=".72"/>
+    <path d="M103 263c36-30 72-29 108 3" class="thin"/>
+    <path d="M688 527c33 17 66 16 99-4" class="thin"/>
+    <path d="M434 540c21 12 42 12 63-1" class="thin"/>
+  </g>
+</svg>

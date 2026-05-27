@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>陈丽娜 — 水墨水彩方向</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@400;700&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --ink: #2C2C2E;
+  --ink-light: #5A5A5C;
+  --parchment: #F7F2EA;
+  --parchment-deep: #EDE5D8;
+  --wash-warm: #D4A574;
+  --wash-rose: #C4787A;
+  --wash-sage: #8BA888;
+  --wash-sky: #7AAAC4;
+  --wash-amber: #D4A044;
+  --white: #FFFFFF;
+}
+
+body {
+  font-family: 'Noto Serif SC', serif;
+  background: var(--parchment);
+  color: var(--ink);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Rice paper texture */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='paper'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.04' numOctaves='5' seed='2'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23paper)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 999;
+}
+
+/* ═══ WATERCOLOR SPLASH (CSS-only, no JS) ═══ */
+.watercolor-splash {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(40px);
+  mix-blend-mode: multiply;
+  opacity: 0.12;
+}
+
+/* ═══ HERO ═══ */
+.hero-ink {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 24px 60px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Watercolor background washes */
+.hero-ink .wash-1 {
+  width: 500px; height: 500px;
+  background: radial-gradient(ellipse at center, var(--wash-rose), transparent 70%);
+  top: -150px; right: -150px;
+  opacity: 0.18;
+}
+.hero-ink .wash-2 {
+  width: 400px; height: 400px;
+  background: radial-gradient(ellipse at center, var(--wash-sky), transparent 70%);
+  bottom: -100px; left: -100px;
+  opacity: 0.15;
+}
+.hero-ink .wash-3 {
+  width: 300px; height: 300px;
+  background: radial-gradient(ellipse at center, var(--wash-amber), transparent 70%);
+  top: 40%; left: 60%;
+  opacity: 0.1;
+}
+
+/* Ink brush stroke decorative lines */
+.brush-stroke {
+  position: absolute;
+  pointer-events: none;
+}
+.brush-h {
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--ink), var(--ink), transparent);
+  opacity: 0.06;
+  border-radius: 2px;
+}
+.brush-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--ink);
+  opacity: 0.08;
+}
+
+.hero-ink .brush-h-1 { width: 120px; top: 20%; left: 5%; transform: rotate(-5deg); }
+.hero-ink .brush-h-2 { width: 80px; bottom: 25%; right: 8%; transform: rotate(3deg); }
+.hero-ink .brush-dot-1 { top: 15%; right: 20%; }
+.hero-ink .brush-dot-2 { bottom: 30%; left: 15%; }
+.hero-ink .brush-dot-3 { top: 55%; right: 25%; }
+
+/* Avatar — ink circle with watercolor fill */
+.avatar-ink {
+  width: 130px; height: 130px;
+  border-radius: 50%;
+  position: relative;
+  margin-bottom: 28px;
+  z-index: 2;
+}
+.avatar-ink .ink-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 3px solid var(--ink);
+  opacity: 0.7;
+}
+.avatar-ink .wash-fill {
+  position: absolute;
+  inset: 6px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at 40% 40%, var(--wash-warm), var(--wash-rose) 70%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 52px;
+  font-weight: 900;
+  color: var(--white);
+  text-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.hero-ink h1 {
+  font-size: 2.8rem;
+  font-weight: 900;
+  letter-spacing: 8px;
+  margin-bottom: 12px;
+  position: relative; z-index: 2;
+  color: var(--ink);
+}
+
+/* Brush underline for name */
+.hero-ink h1::after {
+  content: '';
+  display: block;
+  width: 80%;
+  height: 8px;
+  margin: 8px auto 0;
+  background: linear-gradient(90deg, transparent, var(--wash-rose) 20%, var(--wash-amber) 60%, var(--wash-sage) 80%, transparent);
+  border-radius: 4px;
+  opacity: 0.4;
+  filter: blur(1px);
+}
+
+.hero-ink .subtitle {
+  font-size: 0.9rem;
+  color: var(--ink-light);
+  margin-bottom: 6px;
+  letter-spacing: 1px;
+  position: relative; z-index: 2;
+}
+.hero-ink .location {
+  font-size: 0.8rem;
+  color: var(--ink-light);
+  opacity: 0.6;
+  margin-bottom: 40px;
+  position: relative; z-index: 2;
+}
+
+/* Metrics — ink calligraphy style numbers */
+.metrics-ink {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 40px;
+  position: relative; z-index: 2;
+}
+.metric-ink {
+  text-align: center;
+  padding: 20px 16px;
+  position: relative;
+}
+/* Watercolor wash background per metric */
+.metric-ink::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  filter: blur(20px);
+  opacity: 0.1;
+}
+.metric-ink:nth-child(1)::before { background: var(--wash-rose); }
+.metric-ink:nth-child(2)::before { background: var(--wash-sage); }
+.metric-ink:nth-child(3)::before { background: var(--wash-amber); }
+
+.metric-ink .from-val {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 0.7rem;
+  color: var(--ink-light);
+  opacity: 0.6;
+}
+.metric-ink .num {
+  font-size: 2.5rem;
+  font-weight: 900;
+  line-height: 1.1;
+  color: var(--ink);
+}
+.metric-ink .lbl {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 0.65rem;
+  color: var(--ink-light);
+  letter-spacing: 2px;
+  margin-top: 4px;
+}
+
+/* Ink brush divider */
+.ink-divider {
+  width: 60px;
+  height: 2px;
+  background: var(--ink);
+  margin: 0 auto 28px;
+  opacity: 0.15;
+  position: relative; z-index: 2;
+}
+
+.hero-ink .tagline {
+  font-size: 1rem;
+  color: var(--ink-light);
+  line-height: 2;
+  max-width: 380px;
+  position: relative; z-index: 2;
+  letter-spacing: 1px;
+}
+.tagline em {
+  font-style: normal;
+  color: var(--ink);
+  font-weight: 700;
+  position: relative;
+}
+.tagline em::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: -2px; right: -2px;
+  height: 6px;
+  background: var(--wash-amber);
+  opacity: 0.25;
+  border-radius: 3px;
+  z-index: -1;
+}
+
+/* ═══ SECTION TRANSITION — watercolor band ═══ */
+.watercolor-band {
+  height: 40px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(196, 120, 122, 0.08) 15%,
+    rgba(139, 168, 136, 0.1) 35%,
+    rgba(212, 160, 68, 0.08) 55%,
+    rgba(122, 170, 196, 0.1) 75%,
+    transparent 100%
+  );
+  filter: blur(8px);
+}
+
+/* ═══ SERVICES ═══ */
+.services-ink {
+  padding: 56px 24px;
+  background: var(--white);
+  position: relative;
+}
+.services-ink h2 {
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: 900;
+  letter-spacing: 6px;
+  margin-bottom: 28px;
+}
+
+.tab-bar-ink {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 36px;
+  justify-content: center;
+}
+.tab-ink {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-family: 'Noto Serif SC', serif;
+  color: var(--ink-light);
+  background: transparent;
+  min-height: 44px;
+  letter-spacing: 1px;
+  position: relative;
+}
+.tab-ink.active {
+  color: var(--ink);
+  font-weight: 900;
+}
+/* Brush underline for active tab */
+.tab-ink.active::after {
+  content: '';
+  position: absolute;
+  bottom: 4px; left: 20%; right: 20%;
+  height: 6px;
+  background: linear-gradient(90deg, var(--wash-rose), var(--wash-amber));
+  border-radius: 3px;
+  opacity: 0.35;
+  filter: blur(1px);
+}
+
+.tab-content-ink {
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+/* Pain points as ink tags */
+.pain-ink {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 28px;
+  justify-content: center;
+}
+.pain-tag-ink {
+  padding: 6px 16px;
+  background: var(--parchment);
+  border: 1px solid var(--parchment-deep);
+  border-radius: 4px;
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 0.8rem;
+  color: var(--ink-light);
+  position: relative;
+}
+/* Small watercolor dot accent */
+.pain-tag-ink::before {
+  content: '';
+  position: absolute;
+  top: -3px; right: -3px;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  opacity: 0.4;
+}
+.pain-tag-ink:nth-child(1)::before { background: var(--wash-rose); }
+.pain-tag-ink:nth-child(2)::before { background: var(--wash-sage); }
+.pain-tag-ink:nth-child(3)::before { background: var(--wash-sky); }
+.pain-tag-ink:nth-child(4)::before { background: var(--wash-amber); }
+
+.svc-list-ink {
+  list-style: none;
+  margin-bottom: 28px;
+}
+.svc-list-ink li {
+  padding: 14px 0 14px 24px;
+  position: relative;
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 0.9rem;
+  color: var(--ink);
+  border-bottom: 1px solid var(--parchment-deep);
+}
+.svc-list-ink li::before {
+  content: '';
+  position: absolute;
+  left: 4px; top: 20px;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--wash-sage);
+  opacity: 0.5;
+}
+
+/* Case card — watercolor wash background */
+.case-ink {
+  background: var(--parchment);
+  border-radius: 8px;
+  padding: 28px;
+  position: relative;
+  overflow: hidden;
+}
+/* Watercolor splash behind card */
+.case-ink::before {
+  content: '';
+  position: absolute;
+  top: -20px; right: -20px;
+  width: 150px; height: 150px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, var(--wash-rose), transparent 70%);
+  opacity: 0.1;
+  filter: blur(20px);
+}
+.case-ink h4 {
+  font-size: 1.1rem;
+  font-weight: 900;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+}
+.case-ink .desc {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 0.85rem;
+  color: var(--ink-light);
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+.case-ink .result {
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: var(--ink);
+  position: relative;
+  display: inline-block;
+}
+.case-ink .result::after {
+  content: '';
+  position: absolute;
+  bottom: -2px; left: -4px; right: -4px;
+  height: 10px;
+  background: linear-gradient(90deg, var(--wash-amber), var(--wash-rose));
+  opacity: 0.2;
+  border-radius: 5px;
+  z-index: -1;
+}
+.case-ink .result-label {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 0.75rem;
+  color: var(--ink-light);
+  margin-top: 4px;
+}
+
+/* ═══ TESTIMONIALS ═══ */
+.testimonials-ink {
+  padding: 56px 24px;
+  background: var(--parchment);
+  position: relative;
+}
+.testimonials-ink h2 {
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: 900;
+  letter-spacing: 6px;
+  margin-bottom: 36px;
+}
+.testi-stack-ink {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 560px;
+  margin: 0 auto;
+}
+.testi-ink {
+  padding: 28px;
+  position: relative;
+  background: var(--white);
+  border-radius: 4px;
+}
+/* Watercolor left border */
+.testi-ink::before {
+  content: '';
+  position: absolute;
+  top: 8px; bottom: 8px; left: 0;
+  width: 4px;
+  border-radius: 2px;
+}
+.testi-ink:nth-child(1)::before { background: linear-gradient(to bottom, var(--wash-rose), var(--wash-amber)); }
+.testi-ink:nth-child(2)::before { background: linear-gradient(to bottom, var(--wash-sage), var(--wash-sky)); }
+.testi-ink:nth-child(3)::before { background: linear-gradient(to bottom, var(--wash-amber), var(--wash-rose)); }
+
+.testi-ink .big-q {
+  font-size: 3.5rem;
+  line-height: 1;
+  position: absolute;
+  top: 8px; left: 16px;
+  opacity: 0.06;
+  font-family: Georgia, serif;
+}
+.testi-ink blockquote {
+  font-size: 0.9rem;
+  line-height: 1.9;
+  color: var(--ink);
+  margin-bottom: 10px;
+  padding-top: 4px;
+}
+.testi-ink .author {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 0.75rem;
+  color: var(--ink-light);
+}
+
+/* ═══ WHY ME ═══ */
+.why-ink {
+  padding: 56px 24px;
+  background: var(--white);
+}
+.why-ink h2 {
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: 900;
+  letter-spacing: 6px;
+  margin-bottom: 36px;
+}
+.compare-ink {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 560px;
+  margin: 0 auto 36px;
+}
+.cmp-ink {
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border-radius: 4px;
+}
+.cmp-ink.dim {
+  background: var(--parchment);
+  opacity: 0.7;
+}
+.cmp-ink.highlight {
+  background: var(--parchment);
+  opacity: 1;
+  position: relative;
+}
+/* Full-width watercolor wash behind highlighted card */
+.cmp-ink.highlight::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(196,120,122,0.08), rgba(212,160,68,0.06), rgba(139,168,136,0.08));
+  border-radius: 4px;
+}
+.cmp-ink .icon { font-size: 1.6rem; position: relative; z-index: 2; }
+.cmp-ink .name { font-weight: 900; font-size: 0.9rem; position: relative; z-index: 2; }
+.cmp-ink .note {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 0.8rem;
+  color: var(--ink-light);
+  margin-top: 2px;
+  position: relative; z-index: 2;
+}
+
+.pitches-ink {
+  max-width: 560px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.pitch-ink {
+  padding: 24px;
+  border-radius: 4px;
+  background: var(--parchment);
+  position: relative;
+}
+.pitch-ink::before {
+  content: '';
+  position: absolute;
+  top: 12px; bottom: 12px; left: 0;
+  width: 3px;
+  background: var(--wash-sage);
+  border-radius: 2px;
+  opacity: 0.6;
+}
+.pitch-ink .target {
+  font-weight: 700;
+  color: var(--ink);
+  font-size: 0.85rem;
+  margin-bottom: 8px;
+}
+.pitch-ink .text {
+  font-size: 0.9rem;
+  line-height: 1.9;
+  color: var(--ink-light);
+}
+
+/* ═══ CTA ═══ */
+.cta-ink {
+  padding: 72px 24px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  background: var(--parchment);
+}
+/* Large watercolor wash backdrop */
+.cta-ink .wash-bg {
+  position: absolute;
+  inset: -50px;
+  background: radial-gradient(ellipse at 50% 50%, rgba(196,120,122,0.12), rgba(212,160,68,0.08) 40%, transparent 70%);
+  filter: blur(40px);
+}
+.cta-ink h2 {
+  font-size: 1.6rem;
+  font-weight: 900;
+  margin-bottom: 16px;
+  letter-spacing: 4px;
+  position: relative; z-index: 2;
+}
+.cta-ink p {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 0.9rem;
+  color: var(--ink-light);
+  max-width: 360px;
+  margin: 0 auto 28px;
+  line-height: 1.8;
+  position: relative; z-index: 2;
+}
+.cta-btn-ink {
+  display: inline-block;
+  padding: 16px 48px;
+  background: var(--ink);
+  color: var(--parchment);
+  font-family: 'Noto Serif SC', serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  border-radius: 4px;
+  text-decoration: none;
+  position: relative; z-index: 2;
+  transition: all 0.3s;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.1);
+}
+.cta-btn-ink:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+}
+.cta-contact-ink {
+  font-family: 'Noto Sans SC', sans-serif;
+  margin-top: 16px;
+  font-size: 0.8rem;
+  color: var(--ink-light);
+  opacity: 0.5;
+  position: relative; z-index: 2;
+}
+
+/* ═══ FLOATING BAR ═══ */
+.floating-bar {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  z-index: 50;
+  display: flex;
+  gap: 12px;
+  padding: 12px 16px;
+  padding-bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+  background: rgba(247, 242, 234, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 -2px 20px rgba(0,0,0,0.06);
+}
+.floating-bar a, .floating-bar button {
+  flex: 1; padding: 14px; border: none; border-radius: 4px;
+  font-size: 0.85rem; font-weight: 700; cursor: pointer;
+  text-decoration: none; text-align: center; display: block;
+  font-family: 'Noto Serif SC', serif; letter-spacing: 2px;
+  transition: transform 0.2s;
+}
+.floating-bar a:active, .floating-bar button:active { transform: scale(0.97); }
+.floating-bar .wechat-btn {
+  background: var(--ink);
+  color: var(--parchment);
+}
+.floating-bar .phone-btn {
+  background: transparent;
+  color: var(--ink);
+  border: 1.5px solid var(--ink);
+}
+.page-bottom-spacer { height: 80px; }
+
+@media (min-width: 768px) {
+  .hero-ink h1 { font-size: 4rem; letter-spacing: 12px; }
+  .metrics-ink { gap: 40px; }
+  .metric-ink .num { font-size: 3rem; }
+  .testi-stack-ink { flex-direction: row; }
+  .compare-ink { flex-direction: row; }
+  .cmp-ink { flex: 1; flex-direction: column; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<section class="hero-ink">
+  <div class="watercolor-splash wash-1"></div>
+  <div class="watercolor-splash wash-2"></div>
+  <div class="watercolor-splash wash-3"></div>
+  <div class="brush-stroke brush-h brush-h-1"></div>
+  <div class="brush-stroke brush-h brush-h-2"></div>
+  <div class="brush-stroke brush-dot brush-dot-1"></div>
+  <div class="brush-stroke brush-dot brush-dot-2"></div>
+  <div class="brush-stroke brush-dot brush-dot-3"></div>
+
+  <div class="avatar-ink">
+    <div class="ink-ring"></div>
+    <div class="wash-fill">陈</div>
+  </div>
+  <h1>陈丽娜</h1>
+  <p class="subtitle">教育学硕士（瑞士伯尔尼大学）｜15 年教育产品与教学闭环实战</p>
+  <p class="location">Base 成都 ｜ 可接全国项目合作</p>
+
+  <div class="metrics-ink">
+    <div class="metric-ink">
+      <div class="from-val">38% →</div>
+      <div class="num">75%</div>
+      <div class="lbl">DEMO课转化</div>
+    </div>
+    <div class="metric-ink">
+      <div class="from-val">40% →</div>
+      <div class="num">0.3%</div>
+      <div class="lbl">教师流失</div>
+    </div>
+    <div class="metric-ink">
+      <div class="from-val">&nbsp;</div>
+      <div class="num">1,000+</div>
+      <div class="lbl">师训覆盖</div>
+    </div>
+  </div>
+
+  <div class="ink-divider"></div>
+  <p class="tagline"><em>诊断产品</em> → <em>研发课程</em> → <em>培训出能打仗的老师</em></p>
+</section>
+
+<div class="watercolor-band"></div>
+
+<section class="services-ink">
+  <h2>服务与案例</h2>
+  <div class="tab-bar-ink">
+    <button class="tab-ink active">咨询诊断</button>
+    <button class="tab-ink">产品研发</button>
+    <button class="tab-ink">培训体系</button>
+  </div>
+  <div class="tab-content-ink">
+    <div class="pain-ink">
+      <span class="pain-tag-ink">课程卖不动</span>
+      <span class="pain-tag-ink">交付不统一</span>
+      <span class="pain-tag-ink">老师不会讲</span>
+      <span class="pain-tag-ink">用户学了没效果</span>
+    </div>
+    <ul class="svc-list-ink">
+      <li>从研发产品到教学执行落地的闭环诊断</li>
+      <li>DEMO 试听课/转化路径优化</li>
+      <li>长期陪跑（产品 + 教学 + 增长）</li>
+    </ul>
+    <div class="case-ink">
+      <h4>DEMO 课转化翻倍</h4>
+      <p class="desc">某机构试听课转化率长期卡在 38%。3 周诊断 + 教学触点重构，直接翻倍。</p>
+      <div class="result">38% → 75%</div>
+      <div class="result-label">转化率提升</div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials-ink">
+  <h2>客户怎么说</h2>
+  <div class="testi-stack-ink">
+    <div class="testi-ink">
+      <span class="big-q">"</span>
+      <blockquote>陈老师帮我们做 DEMO 课诊断后，3 周时间转化率翻倍。她不是给我们一个 PPT，而是带着我们现场改、现场练。</blockquote>
+      <p class="author">—— 某教育机构创始人</p>
+    </div>
+    <div class="testi-ink">
+      <span class="big-q">"</span>
+      <blockquote>教师流失率从 40% 降到 0.3%，这在教育行业几乎不可能。她做到了。</blockquote>
+      <p class="author">—— 某机构教学负责人</p>
+    </div>
+    <div class="testi-ink">
+      <span class="big-q">"</span>
+      <blockquote>8 周时间，从 0 到完整小课包交付，我们直接启动招生。她是我合作过最「落地」的产品人。</blockquote>
+      <p class="author">—— 某课程合作方</p>
+    </div>
+  </div>
+</section>
+
+<section class="why-ink">
+  <h2>为什么选择我</h2>
+  <div class="compare-ink">
+    <div class="cmp-ink dim">
+      <span class="icon">📝</span>
+      <div>
+        <p class="name">普通教研</p>
+        <p class="note">给你方案，不管落地</p>
+      </div>
+    </div>
+    <div class="cmp-ink dim">
+      <span class="icon">🎤</span>
+      <div>
+        <p class="name">普通培训师</p>
+        <p class="note">讲完就走，不追结果</p>
+      </div>
+    </div>
+    <div class="cmp-ink highlight">
+      <span class="icon">🚀</span>
+      <div>
+        <p class="name">我</p>
+        <p class="note">从诊断到落地到培训，一手包完，并且用数据验证</p>
+      </div>
+    </div>
+  </div>
+  <div class="pitches-ink">
+    <div class="pitch-ink">
+      <p class="target">如果你是机构创始人：</p>
+      <p class="text">"我做过 0-1，也做过 1-10。你的增长瓶颈，我大概率见过。"</p>
+    </div>
+    <div class="pitch-ink">
+      <p class="target">如果你是教学负责人：</p>
+      <p class="text">"我让一个机构的教师流失率从 40% 降到 0.3%。你的老师问题，我有系统解法。"</p>
+    </div>
+    <div class="pitch-ink">
+      <p class="target">如果你是课程合作方：</p>
+      <p class="text">"我研发的项目，NPS +50%、续费率 +35%。你的产品，我可以让它更能打。"</p>
+    </div>
+  </div>
+</section>
+
+<section class="cta-ink">
+  <div class="wash-bg"></div>
+  <h2>免费诊断邀请</h2>
+  <p>如果你正在纠结"课程卖不动 / 老师教不好 / 培训没效果"，我可以为你提供一次 30 分钟的免费诊断沟通。</p>
+  <a href="tel:15757365158" class="cta-btn-ink">立即预约 30 分钟免费诊断</a>
+  <p class="cta-contact-ink">微信/电话：15757365158（添加请备注"诊断"）</p>
+</section>
+
+<div class="page-bottom-spacer"></div>
+<div class="floating-bar">
+  <button class="wechat-btn">加微信</button>
+  <a href="tel:15757365158" class="phone-btn">打电话</a>
+</div>
+
+</body>
+</html>

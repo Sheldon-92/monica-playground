@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>陈丽娜 — 沉浸叙事方向</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Noto+Sans+SC:wght@400;700&family=Playfair+Display:wght@700;900&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #0F0E17;
+  --surface: #1A1929;
+  --card: #232136;
+  --gold: #E8A838;
+  --rose: #E8725A;
+  --teal: #56BEB8;
+  --lavender: #B4A0D4;
+  --text: #F2F0ED;
+  --text-dim: #9E9BA8;
+  --warm-white: #FFF8F0;
+}
+
+body {
+  font-family: 'Noto Sans SC', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Film grain overlay */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='256' height='256' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1000;
+}
+
+/* ═══ HERO ═══ */
+.hero-immersive {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 24px 60px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Atmospheric glow */
+.glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.2;
+}
+.glow-1 { width: 500px; height: 500px; background: var(--gold); top: -200px; right: -150px; }
+.glow-2 { width: 400px; height: 400px; background: var(--rose); bottom: -200px; left: -100px; }
+.glow-3 { width: 300px; height: 300px; background: var(--lavender); top: 30%; left: 50%; transform: translateX(-50%); }
+
+.avatar-immersive {
+  width: 120px; height: 120px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold), var(--rose));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 52px; color: var(--bg); font-weight: 900;
+  margin-bottom: 32px;
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 0 60px rgba(232, 168, 56, 0.3);
+}
+
+.hero-immersive h1 {
+  font-family: 'Playfair Display', 'Noto Serif SC', serif;
+  font-size: 3.5rem;
+  font-weight: 900;
+  letter-spacing: 4px;
+  margin-bottom: 16px;
+  position: relative; z-index: 2;
+  background: linear-gradient(135deg, var(--warm-white), var(--gold));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero-immersive .subtitle {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 0.95rem;
+  color: var(--text-dim);
+  margin-bottom: 6px;
+  letter-spacing: 1px;
+  position: relative; z-index: 2;
+}
+.hero-immersive .location {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  opacity: 0.6;
+  margin-bottom: 48px;
+  position: relative; z-index: 2;
+}
+
+/* Metrics — cinematic number display */
+.metrics-cine {
+  display: flex;
+  gap: 32px;
+  margin-bottom: 48px;
+  position: relative; z-index: 2;
+}
+.metric-cine {
+  text-align: center;
+}
+.metric-cine .num {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.8rem;
+  font-weight: 900;
+  line-height: 1;
+}
+.metric-cine:nth-child(1) .num { color: var(--gold); }
+.metric-cine:nth-child(2) .num { color: var(--teal); }
+.metric-cine:nth-child(3) .num { color: var(--lavender); }
+.metric-cine .from-val {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  margin-bottom: 2px;
+}
+.metric-cine .lbl {
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  margin-top: 6px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* Horizontal rule — elegant */
+.elegant-rule {
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin: 0 auto 32px;
+  position: relative; z-index: 2;
+}
+
+.hero-immersive .tagline-immersive {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 1.05rem;
+  color: var(--text-dim);
+  line-height: 2;
+  max-width: 400px;
+  position: relative; z-index: 2;
+}
+.tagline-immersive em {
+  color: var(--gold);
+  font-style: normal;
+  font-weight: 700;
+}
+
+/* ═══ SERVICES ═══ */
+.services-immersive {
+  padding: 60px 24px;
+  background: var(--surface);
+  position: relative;
+}
+.services-immersive::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(232,168,56,0.3), transparent);
+}
+.services-immersive h2 {
+  text-align: center;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 32px;
+  letter-spacing: 4px;
+}
+
+.tab-bar-immersive {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 36px;
+  justify-content: center;
+  background: var(--bg);
+  border-radius: 12px;
+  padding: 4px;
+  max-width: 420px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.tab-imm {
+  flex: 1;
+  padding: 12px 8px;
+  border: none;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-family: 'Noto Sans SC', sans-serif;
+  color: var(--text-dim);
+  background: transparent;
+  min-height: 44px;
+}
+.tab-imm.active {
+  background: linear-gradient(135deg, var(--gold), var(--rose));
+  color: var(--bg);
+  box-shadow: 0 4px 16px rgba(232,168,56,0.3);
+}
+
+.tab-content-imm {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.pain-tags-imm {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+.pain-tag {
+  padding: 6px 14px;
+  border: 1px solid rgba(232,168,56,0.3);
+  border-radius: 100px;
+  font-size: 0.75rem;
+  color: var(--gold);
+  background: rgba(232,168,56,0.05);
+}
+
+.svc-list-imm {
+  list-style: none;
+  margin-bottom: 28px;
+}
+.svc-list-imm li {
+  padding: 14px 0;
+  padding-left: 28px;
+  position: relative;
+  font-size: 0.9rem;
+  color: var(--text-dim);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.svc-list-imm li::before {
+  content: '◆';
+  position: absolute;
+  left: 0;
+  color: var(--gold);
+  font-size: 0.6rem;
+  top: 18px;
+}
+
+.case-imm {
+  background: var(--card);
+  border-radius: 20px;
+  padding: 28px;
+  border: 1px solid rgba(255,255,255,0.06);
+  position: relative;
+  overflow: hidden;
+}
+.case-imm::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold), var(--rose), var(--lavender));
+}
+.case-imm h4 {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 10px;
+}
+.case-imm p {
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+.case-imm .result-badge {
+  display: inline-block;
+  padding: 8px 20px;
+  background: linear-gradient(135deg, rgba(232,168,56,0.15), rgba(232,114,90,0.15));
+  border: 1px solid rgba(232,168,56,0.3);
+  border-radius: 100px;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--gold);
+}
+
+/* ═══ TESTIMONIALS ═══ */
+.testimonials-imm {
+  padding: 60px 24px;
+  background: var(--bg);
+  position: relative;
+}
+.testimonials-imm h2 {
+  text-align: center;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 1.5rem;
+  margin-bottom: 36px;
+  letter-spacing: 4px;
+}
+.testi-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+.testi-imm {
+  background: var(--surface);
+  border-radius: 16px;
+  padding: 28px;
+  border: 1px solid rgba(255,255,255,0.04);
+  position: relative;
+}
+.testi-imm .big-quote {
+  font-family: 'Playfair Display', serif;
+  font-size: 4rem;
+  line-height: 1;
+  position: absolute;
+  top: 8px; left: 20px;
+  opacity: 0.08;
+}
+.testi-imm blockquote {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 0.9rem;
+  line-height: 1.9;
+  color: var(--text);
+  font-style: italic;
+  margin-bottom: 12px;
+}
+.testi-imm .author {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+}
+.testi-imm:nth-child(1) { border-left: 3px solid var(--gold); }
+.testi-imm:nth-child(2) { border-left: 3px solid var(--teal); }
+.testi-imm:nth-child(3) { border-left: 3px solid var(--lavender); }
+
+/* ═══ WHY ME ═══ */
+.why-imm {
+  padding: 60px 24px;
+  background: var(--surface);
+}
+.why-imm h2 {
+  text-align: center;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 1.5rem;
+  margin-bottom: 36px;
+  letter-spacing: 4px;
+}
+.compare-imm {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 600px;
+  margin: 0 auto 36px;
+}
+.cmp-card {
+  padding: 20px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.cmp-card.dim {
+  background: var(--card);
+  opacity: 0.6;
+}
+.cmp-card.bright {
+  background: linear-gradient(135deg, rgba(232,168,56,0.12), rgba(232,114,90,0.08));
+  border: 1px solid rgba(232,168,56,0.3);
+  opacity: 1;
+}
+.cmp-card .icon { font-size: 1.8rem; }
+.cmp-card .name {
+  font-weight: 700;
+  font-size: 0.95rem;
+  margin-bottom: 2px;
+}
+.cmp-card.bright .name { color: var(--gold); }
+.cmp-card .note {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+}
+
+.pitches-imm {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.pitch-imm {
+  padding: 24px;
+  border-radius: 16px;
+  background: var(--card);
+  border-left: 3px solid var(--teal);
+}
+.pitch-imm .target {
+  font-family: 'Noto Serif SC', serif;
+  font-weight: 700;
+  color: var(--teal);
+  font-size: 0.85rem;
+  margin-bottom: 8px;
+}
+.pitch-imm .text {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 0.9rem;
+  line-height: 1.8;
+  color: var(--text);
+  font-style: italic;
+}
+
+/* ═══ CTA ═══ */
+.cta-imm {
+  padding: 80px 24px;
+  background: var(--bg);
+  text-align: center;
+  position: relative;
+}
+.cta-imm::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 10%; right: 10%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(232,168,56,0.3), transparent);
+}
+.cta-imm h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 900;
+  margin-bottom: 16px;
+  background: linear-gradient(135deg, var(--gold), var(--rose));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.cta-imm p {
+  font-size: 0.9rem;
+  color: var(--text-dim);
+  max-width: 360px;
+  margin: 0 auto 28px;
+  line-height: 1.8;
+}
+.cta-btn-imm {
+  display: inline-block;
+  padding: 16px 48px;
+  background: linear-gradient(135deg, var(--gold), var(--rose));
+  color: var(--bg);
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: 100px;
+  text-decoration: none;
+  box-shadow: 0 8px 32px rgba(232,168,56,0.25);
+  transition: all 0.3s;
+}
+.cta-btn-imm:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 48px rgba(232,168,56,0.35);
+}
+.cta-contact-imm {
+  margin-top: 16px;
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  opacity: 0.5;
+}
+
+/* ═══ FLOATING BAR ═══ */
+.floating-bar {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  z-index: 50;
+  display: flex;
+  gap: 12px;
+  padding: 12px 16px;
+  padding-bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+  background: rgba(15, 14, 23, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.floating-bar a, .floating-bar button {
+  flex: 1; padding: 14px; border: none; border-radius: 14px;
+  font-size: 0.9rem; font-weight: 700; cursor: pointer;
+  text-decoration: none; text-align: center; display: block;
+  font-family: 'Noto Sans SC', sans-serif; transition: transform 0.2s;
+}
+.floating-bar a:active, .floating-bar button:active { transform: scale(0.97); }
+.floating-bar .wechat-btn {
+  background: linear-gradient(135deg, var(--gold), var(--rose));
+  color: var(--bg);
+}
+.floating-bar .phone-btn {
+  background: transparent;
+  color: var(--gold);
+  border: 1px solid rgba(232,168,56,0.4);
+}
+.page-bottom-spacer { height: 80px; }
+
+@media (min-width: 768px) {
+  .hero-immersive h1 { font-size: 5rem; letter-spacing: 8px; }
+  .metrics-cine { gap: 48px; }
+  .metric-cine .num { font-size: 3.5rem; }
+  .testi-stack { flex-direction: row; }
+  .compare-imm { flex-direction: row; }
+  .cmp-card { flex: 1; flex-direction: column; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<section class="hero-immersive">
+  <div class="glow glow-1"></div>
+  <div class="glow glow-2"></div>
+  <div class="glow glow-3"></div>
+
+  <div class="avatar-immersive">陈</div>
+  <h1>陈丽娜</h1>
+  <p class="subtitle">教育学硕士（瑞士伯尔尼大学）｜15 年教育产品与教学闭环实战</p>
+  <p class="location">Base 成都 ｜ 可接全国项目合作</p>
+
+  <div class="metrics-cine">
+    <div class="metric-cine">
+      <div class="from-val">38% →</div>
+      <div class="num">75%</div>
+      <div class="lbl">DEMO课转化</div>
+    </div>
+    <div class="metric-cine">
+      <div class="from-val">40% →</div>
+      <div class="num">0.3%</div>
+      <div class="lbl">教师流失</div>
+    </div>
+    <div class="metric-cine">
+      <div class="from-val">&nbsp;</div>
+      <div class="num">1,000+</div>
+      <div class="lbl">师训覆盖</div>
+    </div>
+  </div>
+
+  <div class="elegant-rule"></div>
+  <p class="tagline-immersive"><em>诊断产品</em> → <em>研发课程</em> → <em>培训出能打仗的老师</em></p>
+</section>
+
+<section class="services-immersive">
+  <h2>服务与案例</h2>
+  <div class="tab-bar-immersive">
+    <button class="tab-imm active">咨询诊断</button>
+    <button class="tab-imm">产品研发</button>
+    <button class="tab-imm">培训体系</button>
+  </div>
+  <div class="tab-content-imm">
+    <div class="pain-tags-imm">
+      <span class="pain-tag">课程卖不动</span>
+      <span class="pain-tag">交付不统一</span>
+      <span class="pain-tag">老师不会讲</span>
+      <span class="pain-tag">用户学了没效果</span>
+    </div>
+    <ul class="svc-list-imm">
+      <li>从研发产品到教学执行落地的闭环诊断</li>
+      <li>DEMO 试听课/转化路径优化</li>
+      <li>长期陪跑（产品 + 教学 + 增长）</li>
+    </ul>
+    <div class="case-imm">
+      <h4>DEMO 课转化翻倍</h4>
+      <p>某机构试听课转化率长期卡在 38%。3 周诊断 + 教学触点重构，直接翻倍。</p>
+      <span class="result-badge">38% → 75%</span>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials-imm">
+  <h2>客户怎么说</h2>
+  <div class="testi-stack">
+    <div class="testi-imm">
+      <span class="big-quote">"</span>
+      <blockquote>陈老师帮我们做 DEMO 课诊断后，3 周时间转化率翻倍。她不是给我们一个 PPT，而是带着我们现场改、现场练。</blockquote>
+      <p class="author">—— 某教育机构创始人</p>
+    </div>
+    <div class="testi-imm">
+      <span class="big-quote">"</span>
+      <blockquote>教师流失率从 40% 降到 0.3%，这在教育行业几乎不可能。她做到了。</blockquote>
+      <p class="author">—— 某机构教学负责人</p>
+    </div>
+    <div class="testi-imm">
+      <span class="big-quote">"</span>
+      <blockquote>8 周时间，从 0 到完整小课包交付，我们直接启动招生。她是我合作过最「落地」的产品人。</blockquote>
+      <p class="author">—— 某课程合作方</p>
+    </div>
+  </div>
+</section>
+
+<section class="why-imm">
+  <h2>为什么选择我</h2>
+  <div class="compare-imm">
+    <div class="cmp-card dim">
+      <span class="icon">📝</span>
+      <div>
+        <p class="name">普通教研</p>
+        <p class="note">给你方案，不管落地</p>
+      </div>
+    </div>
+    <div class="cmp-card dim">
+      <span class="icon">🎤</span>
+      <div>
+        <p class="name">普通培训师</p>
+        <p class="note">讲完就走，不追结果</p>
+      </div>
+    </div>
+    <div class="cmp-card bright">
+      <span class="icon">🚀</span>
+      <div>
+        <p class="name">我</p>
+        <p class="note">从诊断到落地到培训，一手包完，并且用数据验证</p>
+      </div>
+    </div>
+  </div>
+  <div class="pitches-imm">
+    <div class="pitch-imm">
+      <p class="target">如果你是机构创始人：</p>
+      <p class="text">"我做过 0-1，也做过 1-10。你的增长瓶颈，我大概率见过。"</p>
+    </div>
+    <div class="pitch-imm">
+      <p class="target">如果你是教学负责人：</p>
+      <p class="text">"我让一个机构的教师流失率从 40% 降到 0.3%。你的老师问题，我有系统解法。"</p>
+    </div>
+    <div class="pitch-imm">
+      <p class="target">如果你是课程合作方：</p>
+      <p class="text">"我研发的项目，NPS +50%、续费率 +35%。你的产品，我可以让它更能打。"</p>
+    </div>
+  </div>
+</section>
+
+<section class="cta-imm">
+  <h2>免费诊断邀请</h2>
+  <p>如果你正在纠结"课程卖不动 / 老师教不好 / 培训没效果"，我可以为你提供一次 30 分钟的免费诊断沟通。</p>
+  <a href="tel:15757365158" class="cta-btn-imm">立即预约 30 分钟免费诊断</a>
+  <p class="cta-contact-imm">微信/电话：15757365158（添加请备注"诊断"）</p>
+</section>
+
+<div class="page-bottom-spacer"></div>
+<div class="floating-bar">
+  <button class="wechat-btn">加微信</button>
+  <a href="tel:15757365158" class="phone-btn">打电话</a>
+</div>
+
+</body>
+</html>
